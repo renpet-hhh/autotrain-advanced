@@ -261,7 +261,7 @@ def load_model_components(config, device, weight_dtype):
         )
 
     try:
-        vae = AutoencoderKL.from_pretrained(config.model, subfolder="vae", revision=config.revision)
+        vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float16)
     except OSError:
         logger.warning("No VAE found. Training without VAE.")
         vae = None
